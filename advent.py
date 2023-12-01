@@ -57,10 +57,9 @@ def setup(year, day, dry_run=False):
 
 def get_input(fname=None, mode='r'):
     """Get input data for the day"""
-    dir_name = 'day{:02d}'.format(DAY)
-    if not os.path.isdir(dir_name):
+    if not os.path.isdir(CACHE_DIR):
         try:
-            os.mkdir(dir_name)
+            os.mkdir(CACHE_DIR)
             log("[advent] Created cache directory '{}' since it did not exist.\n", CACHE_DIR)
         except Exception as e:
             log("[advent] ERROR: could not create cache directory '{}'.\n", CACHE_DIR)
@@ -70,7 +69,7 @@ def get_input(fname=None, mode='r'):
     log('[advent] Getting input for year {} day {}... ', YEAR, DAY)
 
     if fname is None:
-        fname = os.path.join(dir_name,'input.txt')
+        fname = os.path.join(CACHE_DIR, '{}_{:02d}.txt'.format(YEAR, DAY))
 
     if not os.path.isfile(fname):
         if not REQUESTS:

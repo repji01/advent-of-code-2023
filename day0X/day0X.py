@@ -47,6 +47,7 @@ def solvePart01(lines):
 def part01():
     global lines
     solution = solvePart01(lines)
+    print("xxx")
     advent.submit_answer(1, solution)
 
 
