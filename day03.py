@@ -39,9 +39,9 @@ INPUT_S_PART_01 = """467..114..
 ......755.
 ...$.*....
 .664.598.."""
-EXPECTED_PART_01 = 8
+EXPECTED_PART_01 = 4361
 
-"""
+
 @pytest.mark.parametrize(
     ('input_s', 'expected'),
     (
@@ -50,7 +50,7 @@ EXPECTED_PART_01 = 8
 )
 def test01(input_s: str, expected: int) -> None:
     assert solve_part01(input_s) == expected
-"""
+
 
 cubes_max = {"red": 12, "green": 13, "blue": 14}
 
@@ -65,6 +65,8 @@ def expand_matrix(matrix):
     return expanded_matrix
 
 def solve_part01(matrix):
+    if isinstance(matrix, str):
+        matrix = get_char_matrix(INPUT_S_PART_01.split("\n"))
     matrix = expand_matrix(matrix)
     part_of_number = False
     safe_number = False
@@ -107,9 +109,9 @@ INPUT_S_PART_02 = """467..114..
 ......755.
 ...$.*....
 .664.598.."""
-EXPECTED_PART_02 = 2286
+EXPECTED_PART_02 = 467835
 
-"""
+
 @pytest.mark.parametrize(
     ('input_s', 'expected'),
     (
@@ -118,7 +120,7 @@ EXPECTED_PART_02 = 2286
 )
 def test02(input_s: str, expected: int) -> None:
     assert (solve_part02(input_s) == expected)
-"""
+
 
 def read_matrix_number(matrix, y, x):
     matrix_line = matrix[y]
@@ -134,7 +136,8 @@ def read_matrix_number(matrix, y, x):
 
 
 def solve_part02(matrix):
-    #matrix = get_char_matrix(INPUT_S_PART_02.split("\n"))
+    if isinstance(matrix, str):
+        matrix = get_char_matrix(INPUT_S_PART_02.split("\n"))
     matrix = expand_matrix(matrix)
     sum = 0
     for y, row in enumerate(matrix):

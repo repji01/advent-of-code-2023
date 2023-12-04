@@ -27,7 +27,6 @@ def download_input_data(day=1):
 
 def parse_games(games):  # -> dict[tuple[int, int, int], int]:
     parsed_games = []
-    print(games)
     for game in games:
         game_id, game_sets = games.split(":")
         game_sets = list(map(parse_set, game_sets.split(";")))
@@ -87,8 +86,7 @@ def solve_part01(games):
 def part01():
     global games
     solution = solve_part01(games)
-    print(solution)
-    # advent.submit_answer(1, solution)
+    advent.submit_answer(1, solution)
 
 
 INPUT_S_PART_02 = """Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
@@ -132,7 +130,6 @@ def solve_part02(games):
 def part02():
     global games
     solution = solve_part02(games)
-    print(solution)
     advent.submit_answer(2, solution)
 
 
